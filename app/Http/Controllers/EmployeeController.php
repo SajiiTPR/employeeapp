@@ -10,11 +10,11 @@ class EmployeeController extends Controller
     public function index(){
         
         $employees = Employee::latest()->paginate(8);
-        return view('details.index',['employees'=>$employees]);
+        return view('details.index', compact('employees'));
     }
     public function details($id){
         $employee = Employee::where('id', $id)->first();
-        return view('details.details',['employee' => $employee]);
+        return view('details.details', compact('employee'));
     }
 
     public function create(){
@@ -45,13 +45,12 @@ class EmployeeController extends Controller
 
         $result->save();
         return back()->with('success', 'Employee added successfully');
-
     }
     
 
     public function update($id){
         $employee = Employee::find($id);
-        return view('details.update', ['employee' => $employee]);
+        return view('details.update', compact('employee'));
     }
     public function newupdate(Request $request, $id){
         $request->validate([
@@ -62,8 +61,7 @@ class EmployeeController extends Controller
             'phone' => 'required|numeric',
         ]);
 
-        $result = Employee::where('id', $id)->first();
-        
+        $result = Employee::where('id', $id)->first();        
 
         $result->fname = $request->fname;
         $result->lname = $request->lname;
@@ -74,6 +72,5 @@ class EmployeeController extends Controller
         $result->save();
         
         return redirect('/')->with('success', 'Employee updated successfully');
-
     }
 }

@@ -30,7 +30,7 @@
                         @method('PUT')
                         <div class="col-md-6 mb-3">
                             <label for="firstname" class="form-label text-capitalize">first name</label>
-                            <input type="text" name="fname" id="firstname" 
+                            <input type="text" name="fname" id="fname" 
                             class="form-control text-capitalize{{ $errors->has('fname') ? ' is-invalid' : '' }}"
                             value="{{old('fname', $employee->fname)}}">
                             @error('fname')
@@ -39,10 +39,10 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastname" class="form-label text-capitalize">Last name</label>
-                            <input type="text" name="lname" id="lastname" 
+                            <input type="text" name="lname" id="lname" 
                             class="form-control text-capitalize{{ $errors->has('lastname') ? ' is-invalid' : '' }}" 
-                            id="lastname" value="{{old('lname', $employee->lname)}}">
-                            @error('lastname')
+                            id="lname" value="{{old('lname', $employee->lname)}}">
+                            @error('lname')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
