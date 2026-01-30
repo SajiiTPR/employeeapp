@@ -26,8 +26,8 @@
             </a>
             <div class="card-body">
                 <h5 class="card-title text-primary">{{$index}}. {{$employee->fname}} {{$employee->lname}}</h5>
-                <p class="card-text text-capitalize"><i class="bi bi-geo-alt"></i> {{$employee->address}}</p>
-                <p class="card-text text-capitalize"><i class="bi bi-telephone"></i> {{$employee->phone}}</p>
+                <p class="card-text text-success text-capitalize"><i class="bi bi-person-workspace"></i> {{$employee->category->name}}</p>
+                <p class="card-text text-secondary text-capitalize"><i class="bi bi-telephone"></i> {{$employee->phone}}</p>
                 <a href="details/{{$employee->id}}/details" class="btn btn-info text-capitalize fw-bold shadow btn-sm">View details</a>
                 <a href="details/{{$employee->id}}/update" class="btn btn-warning text-capitalize fw-bold shadow btn-sm float-end">Update</a>
             </div>

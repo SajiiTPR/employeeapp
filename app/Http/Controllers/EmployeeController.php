@@ -14,7 +14,12 @@ class EmployeeController extends Controller
     }
     public function details($id){
         $employee = Employee::where('id', $id)->first();
-        return view('details.details', compact('employee'));
+
+        $category = $employee->category;
+        $desctiption = Employee::where('category_id', $category->id)
+        ->where('id', '!=', $employee->id)->get();
+
+        return view('details.details', compact('employee','desctiption'));
     }
 
     public function create(){

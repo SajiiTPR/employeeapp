@@ -6,7 +6,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="/details/{{$employee->id}}/details">view details</a></li>
-                        <li class="breadcrumb-item active">Update Form</li>
+                        <li class="breadcrumb-item active fw-bols">Update Form</li>
                     </ol>
                 </nav>
             </div>
