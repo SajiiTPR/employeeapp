@@ -30,8 +30,7 @@
                     <p class=" text-capitalize text-warning">{{$employee->fname}} {{$employee->lname}}</p>
                     <p class=" text-capitalize text-success">{{$employee->category->name}}</p>
                     <p class=" link text-capitalize text-warning"><a href="mailto:{{$employee->mail}}" class="link" target="_blank">{{$employee->mail}}</a></p>
-                    <p class=" text-capitalize text-warning">{{$employee->phone}}</p>
-                    
+                    <p class=" text-capitalize text-warning">{{$employee->phone}}</p>                    
                 </div>
             </aside>
 

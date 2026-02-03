@@ -34,6 +34,6 @@
         </div>
         @endforeach
     </section>
-    {{$employees->links()}}
+    {{$employees->links('pagination::bootstrap-5')}}
 </main>
 @endsection
