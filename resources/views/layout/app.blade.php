@@ -21,37 +21,40 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-houses fs-4 fw-bold "></i></a>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/details/attendance">Attendance</a>
+                </li>
+
             </ul>
         </main>
     </nav>
 
     <!-- main content -->
-     @if($msg =Session::get('success'))
-     <div class="container my-3">
-         <div class="col-md-5 mx-auto  alert alert-success alert-dismissible fade show">
+    @if($msg =Session::get('success'))
+    <div class="container my-3">
+        <div class="col-md-5 mx-auto  alert alert-success alert-dismissible fade show">
             <strong>Success</strong> {{$msg}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <button></button>
-         </div>
-     </div>
-     @elseif($msg =Session::get('error'))
-     <div class="container my-4">
-         <div class="col-md-5 mx-auto  alert alert-danger alert-dismissible fade show">
+        </div>
+    </div>
+    @elseif($msg =Session::get('error'))
+    <div class="container my-4">
+        <div class="col-md-5 mx-auto  alert alert-danger alert-dismissible fade show">
             <strong>Success</strong> {{$msg}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <button></button>
-         </div>
-     </div>
-     @endif
-     @yield('main')
+        </div>
+    </div>
+    @endif
+    @yield('main')
 
-     <!-- footer section -->
-      <footer class="master text-center bg-body-tertiary shadow">
-        
-            <p class="text-center text-capitalize p-2">&copy; all right reserved: 2026 employee maintenance</p>
-        
-      </footer>
+    <!-- footer section -->
+    <footer class="master text-center bg-body-tertiary shadow">
+
+        <p class="text-center text-capitalize p-2">&copy; all right reserved: 2026 employee maintenance</p>
+
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

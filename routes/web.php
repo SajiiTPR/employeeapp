@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +15,6 @@ Route::put('details/{id}/newupdate', [EmployeeController::class, 'newupdate']);
 Route::get('details/{id}/delete', [EmployeeController::class, 'delete']);
 
 Route::post('details/insert', [EmployeeController::class, 'insert']);
+
+// attendance route
+Route::get('details/attendance', [AttendanceController::class, 'attendance']);

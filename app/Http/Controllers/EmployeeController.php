@@ -8,7 +8,6 @@ use App\Models\Employee;
 class EmployeeController extends Controller
 {
     public function index(){
-        
         $employees = Employee::latest()->paginate(8);
         return view('details.index', compact('employees'));
     }
