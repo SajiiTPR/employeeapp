@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\category;
 
 class EmployeeController extends Controller
 {
@@ -14,15 +15,15 @@ class EmployeeController extends Controller
     public function details($id){
         $employee = Employee::where('id', $id)->first();
 
-        $category = $employee->category;
-        $desctiption = Employee::where('category_id', $category->id)
-        ->where('id', '!=', $employee->id)->get();
+        $category = category::all();        
 
-        return view('details.details', compact('employee','desctiption'));
+        return view('details.details', compact('employee','category'));
     }
 
     public function create(){
-        return view('details.create');
+        $employees = Employee::get();
+        $categories = category::all();
+        return view('details.create', compact('employees', 'categories'));
     }
     public function delete($id){
         $dlt = Employee::where('id', $id)->first();
@@ -37,6 +38,7 @@ class EmployeeController extends Controller
             'email' => 'required|email',
             'Address' => 'required',
             'phone' => 'required|numeric',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $result = new Employee;
@@ -46,6 +48,7 @@ class EmployeeController extends Controller
         $result->mail = $validated['email'];
         $result->address = $validated['Address'];
         $result->phone = $validated['phone'];
+        $result->category_id = $validated['category_id'];
 
         $result->save();
         return back()->with('success', 'Employee added successfully');
