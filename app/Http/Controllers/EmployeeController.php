@@ -57,7 +57,8 @@ class EmployeeController extends Controller
 
     public function update($id){
         $employee = Employee::find($id);
-        return view('details.update', compact('employee'));
+        $categories = category::all();
+        return view('details.update', compact('employee', 'categories'));
     }
     public function newupdate(Request $request, $id){
         $request->validate([
@@ -66,18 +67,20 @@ class EmployeeController extends Controller
             'email' => 'required|email',
             'Address' => 'required',
             'phone' => 'required|numeric',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $result = Employee::where('id', $id)->first();        
+        $result = Employee::where('id', $id)->first();
 
         $result->fname = $request->fname;
         $result->lname = $request->lname;
         $result->mail = $request->email;
         $result->address = $request->Address;
         $result->phone = $request->phone;
+        $result->category_id = $request->category_id;
 
         $result->save();
-        
+
         return redirect('/')->with('success', 'Employee updated successfully');
     }
 }

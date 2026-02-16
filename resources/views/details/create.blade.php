@@ -111,7 +111,7 @@
 
                         <!-- submit button -->
                         <div class="col-12 mt-4">
-                            <button type="submit" name="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm">
+                            <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
                                 <i class="bi bi-check-circle me-2"></i>Register Employee
                             </button>
                         </div>

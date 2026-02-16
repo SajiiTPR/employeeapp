@@ -1,81 +1,121 @@
 @extends('layout.app')
 @section('main')
-<!-- breadcrumb path -->
-            <div class="col">
-                <nav class="my-3">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/details/{{$employee->id}}/details">view details</a></li>
-                        <li class="breadcrumb-item active fw-bols">Update Form</li>
-                    </ol>
-                </nav>
-            </div>
-<div class="container my-3">
-    <!-- cart -->
-    <div class="row">
-        <div class="col-md-6 offset-md-3 p-3">
-            <div class="card shadow">
-                <!-- cart header -->
-                <div class="card-header bg-body-tertiary text-center">
-                    <a href="/">
-                        <i class="bi bi-arrow-left-circle position-absolute start-0 ms-3 mt-2 text-secondary fw-bold text-decoration-underline fs-5">
-                            back</i>
+<div class="container my-4">
+    <!-- breadcrumb path -->
+    <nav class="my-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active fw-bold">update Details</li>
+        </ol>
+    </nav>
+
+    <!-- registration form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-lg border-0">
+                <!-- card header -->
+                <div class="card-header bg-gradient text-dark text-center py-4">
+                    <a href="/" class="text-dark position-absolute start-0 ms-3 mt-2" style="text-decoration: none;">
+                        <i class="bi bi-arrow-left-circle fs-3"></i>
                     </a>
-                    <p class="fw-bold fs-3 text-shadow text-success text-capitalize bg-body-tertiary">Registration Form</p>
+                    
+                    <h3 class="fw-bold mb-0"><i class="bi bi-person-plus-fill"></i> Update Employee </h3>
+                    
                 </div>
-                <!-- cart body -->
-                <div class="card-body">
-                    <form class="row " action="/details/{{$employee->id}}/newupdate" method="post" enctype="multipart/form-data" >
+
+                <!-- card body -->
+                <div class="card-body p-4">
+                    <form class="row g-3" action="/details/{{$employee->id}}/newupdate" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
-                        <div class="col-md-6 mb-3">
-                            <label for="firstname" class="form-label text-capitalize">first name</label>
+
+                        <!-- personal information section -->
+                        <div class="col-12">
+                            <h5 class="text-info mb-3"><i class="bi bi-person-circle me-2"></i>Personal Information</h5>
+                        </div>
+
+                        <!-- first name -->
+                        <div class="col-md-6">
+                            <label for="fname" class="form-label fw-semibold">
+                                <i class="bi bi-person me-1"></i>First Name
+                            </label>
                             <input type="text" name="fname" id="fname" 
-                            class="form-control text-capitalize{{ $errors->has('fname') ? ' is-invalid' : '' }}"
-                            value="{{old('fname', $employee->fname)}}">
+                            class="form-control{{ $errors->has('fname') ? ' is-invalid' : '' }}" 
+                            value="{{$employee->fname}}" required>
                             @error('fname')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastname" class="form-label text-capitalize">Last name</label>
-                            <input type="text" name="lname" id="lname" 
-                            class="form-control text-capitalize{{ $errors->has('lastname') ? ' is-invalid' : '' }}" 
-                            id="lname" value="{{old('lname', $employee->lname)}}">
+
+                        <!-- last name -->
+                        <div class="col-md-6">
+                            <label for="lname" class="form-label fw-semibold">
+                                <i class="bi bi-person me-1"></i>Last Name
+                            </label>
+                            <input type="text" name="lname" value="{{$employee->lname}}" id="lname" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" placeholder="Enter last name" required>
                             @error('lname')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label text-capitalize">Email address</label>
-                            <input type="email" name="email" id="email" 
-                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                            id="email" aria-describedby="emailHelp" value="{{old('email', $employee->mail)}}">
+
+                        <!-- contact information section -->
+                        <div class="col-12 mt-4">
+                            <h5 class="text-info mb-3"><i class="bi bi-envelope-at me-2"></i>Contact Information</h5>
+                        </div>
+
+                        <!-- email address -->
+                        <div class="col-12">
+                            <label for="email" class="form-label fw-semibold">
+                                <i class="bi bi-envelope me-1"></i>Email Address
+                            </label>
+                            <input type="email" name="email" value="{{$employee->mail}}" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Enter email address" required>
                             @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="Address" class="form-label text-capitalize">Address</label>
-                            <textarea id="Address"
-                            class="form-control text-capitalize{{ $errors->has('Address') ? ' is-invalid' : '' }}" name="Address"
-                            id="Address" rows="3">{{old('Address', $employee->address)}}</textarea>
+
+                        <!-- address -->
+                        <div class="col-12">
+                            <label for="Address" class="form-label fw-semibold">
+                                <i class="bi bi-geo-alt me-1"></i>Address
+                            </label>
+                            <textarea name="Address" id="Address" class="form-control{{ $errors->has('Address') ? ' is-invalid' : '' }}" rows="3" placeholder="Enter full address" required>{{$employee->fname}} </textarea>
                             @error('Address')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label text-capitalize">phone</label>
-                            <input type="text" name="phone" id="phone" 
-                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" 
-                            id="phone" value="{{old('phone', $employee->phone)}}">
+
+                        <!-- phone number -->
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label fw-semibold">
+                                <i class="bi bi-telephone me-1"></i>Phone Number
+                            </label>
+                            <input type="tel" name="phone" id="phone" value="{{$employee->phone}}" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Enter phone number" required>
                             @error('phone')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col my-3">
-                            <button type="submit" name="submit"
-                                class="btn btn-primary form-control text-capitalize fw-bold shadow">Update</button>
+
+                        <!-- category select options -->
+                        <div class="col-md-6">
+                            <label for="category_id" class="form-label fw-semibold">
+                                <i class="bi bi-tags me-1"></i>Category
+                            </label>
+                            <select name="category_id" id="category_id" class="form-select{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required>
+                                <option value="">-- Select a category --</option>
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $employee->category_id == $category->id ? 'selected' : '' }} > {{ $category->name }} </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- submit button -->
+                        <div class="col-12 mt-4">
+                            <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                                <i class="bi bi-check-circle me-2"></i>update Employee
+                            </button>
                         </div>
                     </form>
                 </div>

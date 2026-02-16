@@ -12,7 +12,7 @@
     </div>
 
     <!-- Attendance Form -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-3">
         <div class="card-header bg-primary text-white">
             <strong>Mark Attendance</strong>
         </div>
@@ -129,8 +129,12 @@
                         <td>{{ $attendance->work_hours ?? '-' }}</td>
                         <td>{{ $attendance->remarks ?? '-' }}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{ route('getAttendance', $attendance->id) }}"
+                            class="btn btn-sm btn-warning">Edit</a>
+
+                            <a href="{{ route('deleteAttendance', $attendance->id) }}"
+                            onclick="return confirm('Are you sure! you want to delete the attendance record !')"
+                            class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
                     @empty
