@@ -78,7 +78,7 @@
                             <label for="Address" class="form-label fw-semibold">
                                 <i class="bi bi-geo-alt me-1"></i>Address
                             </label>
-                            <textarea name="Address" id="Address" class="form-control{{ $errors->has('Address') ? ' is-invalid' : '' }}" rows="3" placeholder="Enter full address" required>{{$employee->fname}} </textarea>
+<textarea name="Address" id="Address" class="form-control{{ $errors->has('Address') ? ' is-invalid' : '' }}" rows="3" placeholder="Enter full address" required>{{$employee->address}} </textarea>
                             @error('Address')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
